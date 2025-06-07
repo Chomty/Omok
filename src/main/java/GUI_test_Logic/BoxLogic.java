@@ -8,6 +8,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import java.util.Objects;
+
 
 public class BoxLogic extends Application {
 
@@ -21,24 +23,44 @@ public class BoxLogic extends Application {
         root.setPrefWidth(x_value);
         root.setPrefHeight(y_value);
         Scene scene = new Scene(root); // scene으로 사용
+
+        // css 스타일 아이콘 적용
+        scene.getStylesheets().add(
+                Objects.requireNonNull(
+                        getClass().getResource("/Style.css")
+                        ).toExternalForm());
+
+
         // GameBoard 부분 (오목을 할 공간)
         HBox GameBoard = new HBox();
-        GameBoard.prefWidth(x_value);
-        GameBoard.prefHeight(y_value);
+        GameBoard.setPrefWidth(x_value);
+        GameBoard.setPrefHeight(y_value);
         GameBoard.setAlignment(Pos.CENTER);
+        GameBoard.setStyle("-fx-background-color: #afafaf;");
+
         // SideBar 부분 (버튼을 종속 하는 메뉴 선택 바)
         VBox SideTab = SideBar();
-        SideTab.setAlignment(Pos.CENTER_LEFT);
+        SideTab.setAlignment(Pos.TOP_LEFT);
+        SideTab.setPrefHeight(y_value);
+        SideTab.setPrefWidth(120);
+        // SideTab.getStyleClass().add("SideTab"); //실패...
+        SideTab.setStyle("-fx-background-color: #2f2f2f;");
+
         // 버튼 정의
-        Button MenuButton = SideButton("menu", () ->
-                System.out.println(1)
+        Button MenuButton = SideButton("null", () ->{
+                GameBoard.setTranslateX(120);
+
+
+                }
+                , "MenuButton"
         );
+        MenuButton.setAlignment(Pos.TOP_RIGHT);
 
 
         // 사이드탭에 버튼을 종속
         SideTab.getChildren().addAll(MenuButton);
         // root에 Boxs를 종속
-        root.getChildren().addAll(SideTab,GameBoard);
+        root.getChildren().addAll(SideTab, GameBoard);
 
 
 
@@ -57,12 +79,17 @@ public class BoxLogic extends Application {
         return Menu;
     }
 
-    public Button SideButton(String Text, Runnable Action){
+    public Button SideButton(String Text, Runnable Action, String icon){
         Button ChButton = new Button();
-        ChButton.setText(Text);
-        ChButton.setPrefWidth(50);
-        ChButton.setPrefHeight(50);
+        if(Text.equals("null")){
+            // pass
+        }else{
+            ChButton.setText(Text);
+        }
+        ChButton.setPrefWidth(28);
+        ChButton.setPrefHeight(28);
         ChButton.setOnAction(e -> Action.run());
+        ChButton.getStyleClass().add(icon);
 
 
         return ChButton;

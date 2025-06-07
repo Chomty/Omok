@@ -1,0 +1,20 @@
+.MenuButton {
+    -fx-background-color: white;
+    -fx-border-color: black;
+    -fx-text-fill: white;
+    -fx-border-radius: 8;           /* (선택) 둥근 테두리 */
+    -fx-background-radius: 8;       /* (선택) 배경도 둥글게 */
+    -fx-padding: 10 10 10 10;                /* (선택) 내부 여백 */
+    -fx-background-image: url("/image/chevrons-right.png");
+    -fx-background-size: 26px 26px;
+    -fx-background-position: center;
+    -fx-font-size: 14px;
+}
+
+.SideTab {
+    -fx-background-color: #f5f5f5;  /* 연회색 배경 */
+    -fx-background-insets: 0;
+    -fx-padding: 20;                /* 안쪽 여백 (선택) */
+    -fx-border-color: #ccc;         /* 테두리 추가 (선택) */
+    -fx-border-width: 1;            /* 테두리 두께 */
+}
