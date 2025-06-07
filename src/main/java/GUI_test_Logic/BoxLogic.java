@@ -30,9 +30,11 @@ public class BoxLogic extends Application {
         VBox SideTab = SideBar();
         SideTab.setAlignment(Pos.CENTER_LEFT);
         // 버튼 정의
-        Button MenuButton = SideButton("실험용", () ->
+        Button MenuButton = SideButton("menu", () ->
                 System.out.println(1)
         );
+
+
         // 사이드탭에 버튼을 종속
         SideTab.getChildren().addAll(MenuButton);
         // root에 Boxs를 종속
@@ -61,7 +63,6 @@ public class BoxLogic extends Application {
         ChButton.setPrefWidth(50);
         ChButton.setPrefHeight(50);
         ChButton.setOnAction(e -> Action.run());
-
 
 
         return ChButton;

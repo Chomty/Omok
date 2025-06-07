@@ -1,0 +1,9 @@
+.Menubutton {
+    -fx-background-color: #333;
+    -fx-text-fill: white;
+    -fx-background-image: url("icon.svg");
+    -fx-background-size: 24px 24px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center left;
+    -fx-padding: 10 10 10 36;
+}
