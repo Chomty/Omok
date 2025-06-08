@@ -17,11 +17,7 @@ javafx {
     modules = [ 'javafx.controls', 'javafx.fxml' ]
 }
 
-java {
-    modularity.inferModulePath = true
-}
-
 application {
-    mainModule = 'gomoku'
-    mainClass = 'Main.mainapp'
+
+    mainClass = 'Main.MainApp'
 }
