@@ -7,7 +7,10 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
+import javafx.util.Duration;
 import java.util.Objects;
 
 
@@ -50,11 +53,8 @@ public class BoxLogic extends Application {
 
         // 버튼 정의
         Button MenuButton = SideButton("null", () ->{
-                GameBoard.setTranslateX(120);
-
-
-                }
-                , "MenuButton"
+            toggleSidebar(SideTab, GameBoard);
+            }, "MenuButton"
         );
         MenuButton.setAlignment(Pos.TOP_RIGHT);
 
@@ -76,6 +76,34 @@ public class BoxLogic extends Application {
         stage.setScene(scene);
         stage.show();
     }
+
+    private boolean isExpanded = false;
+
+    // 사이드바 애니메이션 적용
+    private void toggleSidebar(VBox sideTab, HBox gameBoard) {
+        double startWidth = sideTab.getPrefWidth();
+        double endWidth = isExpanded ? 120 : 240; // 너비 토글
+
+        double startTranslateX = gameBoard.getTranslateX();
+        double endTranslateX = isExpanded ? 0 : endWidth;
+
+        KeyValue widthValue = new KeyValue(
+                sideTab.prefWidthProperty(), endWidth);
+
+        KeyValue moveGameBoard = new KeyValue(
+                gameBoard.translateXProperty(), endTranslateX);
+
+        KeyFrame frame = new KeyFrame(
+                Duration.millis(300),
+                widthValue,
+                moveGameBoard);
+
+        Timeline timeline = new Timeline(frame);
+        timeline.play();
+
+        isExpanded = !isExpanded;
+    }
+
 
     public VBox SideBar(){
         VBox Menu = new VBox();
