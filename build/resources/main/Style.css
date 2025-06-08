@@ -16,6 +16,26 @@
     -fx-cursor: hand;                            /* 마우스 오버시 포인터로 */
 }
 
+.MenuOffButton {
+    -fx-background-color: transparent;           /* 배경 제거 */
+    -fx-border-color: transparent;              /* 테두리 제거 */
+    -fx-text-fill: transparent;                 /* 글자도 안 보이게 */
+    -fx-background-radius: 0;                   /* 둥글기 제거 */
+    -fx-border-radius: 0;
+    -fx-padding: 0;                              /* 여백 제거 */
+
+    -fx-background-image: url("/image/chevrons-left.png");
+    -fx-background-size: 26px 26px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+
+    -fx-pref-width: 26px;                        /* 아이콘 크기와 동일하게 */
+    -fx-pref-height: 26px;
+    -fx-cursor: hand;                            /* 마우스 오버시 포인터로 */
+}
+
+
+
 
 .SideTab {
     -fx-background-color: #f5f5f5;  /* 연회색 배경 */

@@ -1,4 +1,26 @@
-package GUI_test_Logic;
+/** (폐기)
+* 오목판을 제외한 레이아웃들을 배치함
+* 사이드바랑 게임바로 나뉘어있음
+* 구성요소
+*   root : 맨 밑에 깔리는 창임
+*       기본적인 틀 크기를 제한하고 여기에 큰 레이아웃들을 배치함
+*   GameBoard : 게임 보드임
+*       그래프의 레이아웃을 따로 만들어서 종속하고, 왼쪽에 닫힘 버튼을 종속해서 사이드바를 닫을거임
+*   SideBar : 메뉴판임
+*       AI 봇전, 오프라인 대전 이런거 만들어서 유동적으로 이동할 수 있게 만들거임
+*       열림 버튼을 Hbox인 버튼컨테이너에 종속시키고, 버튼 컨테이너는 사이드바에 종속시켜서,
+*       오른쪽으로 열림 버튼이 위치할 수 있도록 하고, 누르면 게임판은 오른쪽으로 이동, 그리고
+*       사이드 바는 오른쪽으로 커지면서 텍스트바가 되게 할거임
+*
+*
+*   TODO
+*    이 ㅈ나 더러운 함수들 다 싹 이니셜라이저로 쳐내서 제발 깔끔하게 만들자.
+*    + 레이아웃 생성이랑 배치가 같이 있고, 동작도 붙어있으니까 너무 복잡하고 더러움
+*    """""""""""""""추후 해당 파일은 폐기."""""""""""""""""""
+*/
+
+
+package bin;
 
 import javafx.application.Application;
 import javafx.geometry.Pos;
@@ -34,21 +56,18 @@ public class BoxLogic extends Application {
                         ).toExternalForm());
 
 
-        // GameBoard 부분 (오목을 할 공간)
-        HBox GameBoard = new HBox();
-        GameBoard.setPrefWidth(x_value);
-        GameBoard.setPrefHeight(y_value);
-        GameBoard.setAlignment(Pos.CENTER);
-        GameBoard.setSpacing(20);
-        GameBoard.setStyle("-fx-background-color: #212121;");
+        // GameBoard 부분 (오목을 할 공간) 이니셜라이저 씀 너무 더러워
+        HBox GameBoard = new HBox(){{
+            setPrefWidth(x_value);
+            setPrefHeight(y_value);
+            setAlignment(Pos.CENTER);
+            setSpacing(20);
+            setStyle("-fx-background-color: #212121;");
+        }};
 
         // SideBar 부분 (버튼을 종속 하는 메뉴 선택 바)
         VBox SideTab = SideBar();
-        SideTab.setAlignment(Pos.TOP_LEFT);
-        SideTab.setPrefHeight(y_value);
-        SideTab.setPrefWidth(120);
-        // SideTab.getStyleClass().add("SideTab"); //실패...
-        SideTab.setStyle("-fx-background-color: #171717;");
+
 
 
         // 버튼 정의
@@ -68,10 +87,6 @@ public class BoxLogic extends Application {
 
         // root에 Boxs를 종속
         root.getChildren().addAll(SideTab, GameBoard);
-
-
-
-
         stage.setTitle("Omok V 0.1");
         stage.setScene(scene);
         stage.show();
@@ -116,6 +131,7 @@ public class BoxLogic extends Application {
 
     public Button SideButton(String Text, Runnable Action, String icon){
         Button ChButton = new Button();
+        // null이면 택스트 안씀
         if(Text.equals("null")){
             // pass
         }else{

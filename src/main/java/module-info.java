@@ -1,9 +1,10 @@
 module gomoku {
     requires javafx.controls;
     requires javafx.fxml;
+    requires java.desktop;
 
     exports Main;
-    exports Core;
-    exports GUI_test_Logic;
+    exports Logic;
+    exports Layout;
 }
 
