@@ -30,13 +30,14 @@ public class GameLayout {
     public static GridPane GameBoard(int size){
 
         GridPane board = new GridPane();
-        board.setHgap(2);
-        board.setVgap(2);
+        board.setHgap(5);
+        board.setVgap(5);
 
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
                 Button cell = new Button();
-                cell.setPrefSize(30, 30);
+                cell.setPrefSize(38, 38);
+                cell.getStyleClass().add("cell-button");
                 board.add(cell, j, i); // (col, row)
             }
         }
