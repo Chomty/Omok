@@ -36,7 +36,8 @@ public class BoxLogic extends Application {
         GameBoard.setPrefWidth(x_value);
         GameBoard.setPrefHeight(y_value);
         GameBoard.setAlignment(Pos.CENTER);
-        GameBoard.setStyle("-fx-background-color: #afafaf;");
+        GameBoard.setSpacing(20);
+        GameBoard.setStyle("-fx-background-color: #212121;");
 
         // SideBar 부분 (버튼을 종속 하는 메뉴 선택 바)
         VBox SideTab = SideBar();
@@ -44,7 +45,8 @@ public class BoxLogic extends Application {
         SideTab.setPrefHeight(y_value);
         SideTab.setPrefWidth(120);
         // SideTab.getStyleClass().add("SideTab"); //실패...
-        SideTab.setStyle("-fx-background-color: #2f2f2f;");
+        SideTab.setStyle("-fx-background-color: #171717;");
+
 
         // 버튼 정의
         Button MenuButton = SideButton("null", () ->{
@@ -56,9 +58,14 @@ public class BoxLogic extends Application {
         );
         MenuButton.setAlignment(Pos.TOP_RIGHT);
 
+        HBox buttonContainer = new HBox();
+        buttonContainer.setAlignment(Pos.TOP_RIGHT); // 오른쪽 정렬
+        buttonContainer.setPrefWidth(120); // SideTab과 동일한 너비
+        buttonContainer.getChildren().add(MenuButton);
 
-        // 사이드탭에 버튼을 종속
-        SideTab.getChildren().addAll(MenuButton);
+        SideTab.getChildren().add(buttonContainer); // HBox를 추가
+
+
         // root에 Boxs를 종속
         root.getChildren().addAll(SideTab, GameBoard);
 
