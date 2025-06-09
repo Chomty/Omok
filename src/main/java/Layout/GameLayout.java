@@ -15,6 +15,7 @@
 
 package Layout;
 
+import Logic.ButtonAction;
 import javafx.scene.layout.GridPane;
 import javafx.scene.control.Button;
 
@@ -35,7 +36,13 @@ public class GameLayout {
 
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
+                final int x = i;
+                final int y = j;
                 Button cell = new Button();
+                // 위치만 알려줌 --> pressTable
+                cell.setOnAction(e -> {
+                    ButtonAction.pressTable(x, y);
+                });
                 cell.setPrefSize(38, 38);
                 cell.getStyleClass().add("cell-button");
                 board.add(cell, j, i); // (col, row)

@@ -1,7 +1,5 @@
 package Logic;
 
-import Main.MainApp;
-
 public class ButtonAction {
     public static void MenuAction(){
         System.out.println(1);
@@ -10,10 +8,10 @@ public class ButtonAction {
     public static void MenuOffAction(){
         System.out.println(2);
     }
-    public static void pressTable(int x, int y){
-        if (GameController.getStone(x, y) == Stone.EMPTY) {
-            GameController.setStone(x, y, GameController.currentStone;);
-            GameController.switchTurn();
 
+    // 여기서 GamController로 신호를 보냄
+    public static void pressTable(int x, int y){
+        GameController.actButton = true;
+        GameController.setStone(x, y);
     }
 }
