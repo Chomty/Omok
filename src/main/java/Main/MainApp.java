@@ -1,11 +1,12 @@
 package Main;
 
 import Layout.RootLayout;
+import Logic.GameController;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
-
 import java.util.Objects;
+
 
 public class MainApp extends Application {
 
@@ -24,7 +25,7 @@ public class MainApp extends Application {
     }
 
     public static void main(String[] args) {
-
+        GameController.setOmokTable();
         launch(args);
 
     }
