@@ -27,10 +27,6 @@ public class MainApp extends Application {
     }
 
     public static void main(String[] args) {
-        // 오목 돌 그리려고 초기화
-        Canvas canvas = new Canvas();
-        // 도구 쥐어주기
-        OmokDrawer.setGraphicsContext(canvas.getGraphicsContext2D());
         // 테이블 초기화
         GameController.setOmokTable();
         launch(args);

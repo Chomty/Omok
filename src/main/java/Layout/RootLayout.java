@@ -1,10 +1,12 @@
 package Layout;
 
+import Logic.OmokDrawer;
 import Logic.ButtonAction;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.canvas.Canvas;
 
@@ -29,13 +31,18 @@ public class RootLayout {
                         ButtonAction::MenuOffAction
                 );
         // 게임 아웃보드
-        GridPane OutBoard = GameLayout.outBoard(x, y);
-        OutBoard.setAlignment(Pos.CENTER);
         // 오목판 그리기
         Canvas boardCanvas = OmokCanvas.createBoard(15, 43);
+        Canvas stoneCanvas = new Canvas(boardCanvas.getWidth(), boardCanvas.getHeight());
+        OmokDrawer.setGraphicsContext(stoneCanvas.getGraphicsContext2D());
+        StackPane boardLayer = new StackPane();
+        boardLayer.getChildren().addAll(boardCanvas, stoneCanvas);
+
+        GridPane OutBoard = GameLayout.outBoard(x, y);
+        OutBoard.setAlignment(Pos.CENTER);
         OutBoard.getChildren().addAll(
                 // 종속
-                boardCanvas,
+                boardLayer,
                 GameLayout.GameBoard(15)
         );
 
