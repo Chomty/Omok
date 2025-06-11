@@ -42,10 +42,11 @@ public class GameLayout {
                 // 위치만 알려줌 --> pressTable
                 cell.setOnAction(e -> {
                     ButtonAction.pressTable(x, y);
+                    cell.setDisable(true);
                 });
                 cell.setPrefSize(38, 38);
                 cell.getStyleClass().add("cell-button");
-                board.add(cell, j, i); // (col, row)
+                board.add(cell, i, j); // (col, row)
             }
         }
 
