@@ -16,12 +16,11 @@ public class OmokDrawer {
      * @param stone : (Stone) 돌 색
      **/
     public static void drawStone(int col, int row, Stone stone) {
-        double cellSize = 38.0;
-        double padding = 5.0;
-        double size = cellSize - 2 * padding;
+        double cellSize = 43.0;
+        double size = cellSize * 0.9;
 
-        double x = col * cellSize + padding;
-        double y = row * cellSize + padding;
+        double x = col * cellSize;
+        double y = row * cellSize;
 
         if (stone == Stone.black) {
             gc.setFill(Color.BLACK);

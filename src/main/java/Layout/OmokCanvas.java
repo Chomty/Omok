@@ -16,10 +16,10 @@ public class OmokCanvas {
         Canvas canvas = new Canvas(boardSize + 43, boardSize + 43); // 여유 여백
         GraphicsContext gc = canvas.getGraphicsContext2D();
 
-        gc.setFill(Color.web("#212121"));
+        gc.setFill(Color.web("#E3C16F"));
         gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
 
-        gc.setStroke(Color.rgb(255, 255, 255, 0.2)); // 흐릿한 흰색
+        gc.setStroke(Color.rgb(0,0,0,1.0));
         gc.setLineWidth(1);
 
         double offset = 20; // 바깥 여백
